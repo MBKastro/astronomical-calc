@@ -1,0 +1,34 @@
+#
+#    function julday
+#
+def itg(w):
+    print('itg')
+    print(w)
+    print(abs(w))
+    sgn = 1
+    if w < 0:
+        sgn = -1
+    print(sgn * int(abs(w)))
+    return (sgn * int(abs(w)))
+
+
+#
+def julday(dy, mn, yr):
+    print('julday')
+    mn1 = mn
+    yr1 = yr
+    b = 0
+    if yr1 < 0:
+        yr1 = yr1 + 1
+    if mn < 3:
+        mn1 = mn + 12
+        yr1 = yr1 - 1
+    if yr > 1582 or (yr == 1582 and mn == 10 and dy >= 15):
+        a = int(yr1 / 100)
+        b = 2 - a + int(a / 4)
+    if yr1 >= 0:
+        c = int(365.25 * yr1) - 694025
+    else:
+        c = itg((365.25 * yr1) - 0.75) - 694025
+    d = int(30.6001 * (mn1 + 1))
+    return (b + c + d + dy - 0.5)
